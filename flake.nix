@@ -35,6 +35,7 @@
           with pkgs;
           mkShellNoCC {
             nativeBuildInputs = [
+              espflash
               espup
               ldproxy
 
