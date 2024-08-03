@@ -33,16 +33,36 @@
       {
         devShells.default =
           with pkgs;
-          mkShellNoCC {
-            nativeBuildInputs = [
-              espflash
-              espup
-              ldproxy
+          mkShell {
+            nativeBuildInputs = [ ];
+            buildInputs =
+              [
+                espflash
+                espup
+                ldproxy
+                pkg-config
 
-              # We don't really care for IDF_PATH, just want the xtensa compiler and stuff
-              esp-idf-esp32
+                # We don't really care for IDF_PATH, just want the xtensa compiler and stuff
+                esp-idf-esp32
+              ]
+              ++ lib.optionals stdenv.isDarwin [
+                darwin.CF
+                darwin.apple_sdk.frameworks.AppKit
+                darwin.apple_sdk.frameworks.CoreServices
+                darwin.apple_sdk.frameworks.CoreFoundation
+                darwin.apple_sdk.frameworks.Foundation
+                darwin.apple_sdk.frameworks.Security
+                darwin.apple_sdk.frameworks.Foundation
+                libiconv
+              ];
+
+            LD_LIBRARY_PATH = lib.makeLibraryPath [ libiconv ];
+            LIBRARY_PATH = lib.makeLibraryPath [
+              libiconv
+              darwin.apple_sdk.frameworks.AppKit
+              darwin.apple_sdk.frameworks.CoreFoundation
+              darwin.apple_sdk.frameworks.Foundation
             ];
-            buildInputs = [ libiconv ];
 
             shellHook = ''
               unset CC
