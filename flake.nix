@@ -47,7 +47,6 @@
                 espup
                 ldproxy
                 pkg-config
-                python3
 
                 # We don't really care for IDF_PATH, just want the xtensa compiler and stuff
                 espIdf
