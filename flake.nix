@@ -27,8 +27,6 @@
           inherit system;
           overlays = [ esp-dev.overlays.default ];
         };
-
-        espIdf32 = pkgs.esp-idf-esp32.override { };
       in
       {
         devShells.default =
@@ -46,23 +44,10 @@
                 esp-idf-esp32
               ]
               ++ lib.optionals stdenv.isDarwin [
-                darwin.CF
-                darwin.apple_sdk.frameworks.AppKit
-                darwin.apple_sdk.frameworks.CoreServices
                 darwin.apple_sdk.frameworks.CoreFoundation
-                darwin.apple_sdk.frameworks.Foundation
-                darwin.apple_sdk.frameworks.Security
                 darwin.apple_sdk.frameworks.Foundation
                 libiconv
               ];
-
-            LD_LIBRARY_PATH = lib.makeLibraryPath [ libiconv ];
-            LIBRARY_PATH = lib.makeLibraryPath [
-              libiconv
-              darwin.apple_sdk.frameworks.AppKit
-              darwin.apple_sdk.frameworks.CoreFoundation
-              darwin.apple_sdk.frameworks.Foundation
-            ];
 
             shellHook = ''
               unset CC
