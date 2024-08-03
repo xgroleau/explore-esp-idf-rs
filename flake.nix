@@ -27,6 +27,14 @@
           inherit system;
           overlays = [ esp-dev.overlays.default ];
         };
+
+        espIdf = pkgs.esp-idf-esp32.override {
+          toolsToInclude = [
+            "xtensa-esp32-elf"
+            "xtensa-esp-elf-gdb"
+            "esp32ulp-elf"
+          ];
+        };
       in
       {
         devShells.default =
@@ -39,9 +47,10 @@
                 espup
                 ldproxy
                 pkg-config
+                python3
 
                 # We don't really care for IDF_PATH, just want the xtensa compiler and stuff
-                esp-idf-esp32
+                espIdf
               ]
               ++ lib.optionals stdenv.isDarwin [
                 darwin.apple_sdk.frameworks.CoreFoundation
