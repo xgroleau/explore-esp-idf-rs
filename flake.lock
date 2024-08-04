@@ -10,17 +10,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1718773764,
-        "narHash": "sha256-e1PD1kCXX00+0AyaFb5mGkkkNfKx+xdLvVVnoMBvQuo=",
-        "owner": "mirrexagon",
-        "repo": "nixpkgs-esp-dev",
-        "rev": "86a2bbe01fe0258887de7396af2a5eb0e37ac3be",
+        "lastModified": 1718627417,
+        "narHash": "sha256-rvVN22M2p8hSocXurB34NYo3zZb5vBd3ew38qjL/W7c=",
+        "owner": "hsel-netsys",
+        "repo": "nixpkgs-esp-dev-rust",
+        "rev": "aabbab2ec46e04e88a1338c97e2b8915bd4e12ec",
         "type": "github"
       },
       "original": {
-        "owner": "mirrexagon",
-        "ref": "master",
-        "repo": "nixpkgs-esp-dev",
+        "owner": "hsel-netsys",
+        "ref": "rust",
+        "repo": "nixpkgs-esp-dev-rust",
         "type": "github"
       }
     },

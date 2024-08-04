@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     esp-dev = {
-      url = "github:mirrexagon/nixpkgs-esp-dev/master";
+      url = "github:hsel-netsys/nixpkgs-esp-dev-rust/rust";
       inputs = {
         flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
@@ -45,8 +45,18 @@
               [
                 espflash
                 espup
-                ldproxy
                 pkg-config
+
+                # LLVM
+                llvm-xtensa
+                llvm-xtensa-lib
+
+                # Rust
+                rust-xtensa
+
+                # Rust development tools for ESP
+                rust-ldproxy
+                rust-cargo-espflash
 
                 # We don't really care for IDF_PATH, just want the xtensa compiler and stuff
                 espIdf
